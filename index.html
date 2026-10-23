@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraCode | Next-Gen Web Development Agency</title>
+ <!--This is a student pracitce project>
+
+    <!--Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            cyan: '#06b6d4',
+                            purple: '#a855f7',
+                        },
+                        dark: {
+                            bg: '#090d16',
+                            card: '#111827',
+                            border: '#1f2937',
+                        }
+                    },
+                    animation: {
+                        'gradient-x': 'gradient-x 15s ease infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+                            '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '0.4' },
+                            '50%': { opacity: '0.8' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar and glassmorphism styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374151;
+        }
+        .glass {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-nav {
+            background: rgba(9, 13, 22, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.25);
+        }
+        .glow-effect-hover:hover {
+            box-shadow: 0 0 35px 0px rgba(168, 85, 247, 0.35);
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-100 font-sans antialiased selection:bg-brand-500 selection:text-white overflow-x-hidden">
+
+    <!-- Background Ambient Glow Elements -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
+    <div class="fixed bottom-1/3 right-10 w-96 h-96 bg-brand-purple/10 rounded-full blur-3xl pointer-events-none animate-pulse-glow" style="animation-delay: 1.5s;"></div>
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 via-brand-purple to-brand-cyan p-[2px] transition-transform duration-300 group-hover:scale-105">
+                        <div class="w-full h-full bg-dark-bg rounded-[10px] flex items-center justify-center">
+                            <i data-lucide="code" class="w-5 h-5 text-brand-cyan"></i>
+                        </div>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-400">
+                        Aura<span class="text-brand-500">Code</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Services</a>
+                    <a href="#portfolio" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Work</a>
+                    <a href="#testimonials" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Reviews</a>
+                    <a href="#pricing" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Pricing</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#contact" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-brand-500 via-brand-purple to-brand-cyan bg-[length:200%_auto] animate-gradient-x hover:shadow-lg hover:shadow-brand-500/25 transition-all duration-300 transform hover:-translate-y-0.5">
+                        Start a Project
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2 rounded-lg bg-gray-800/50">
+                        <i data-lucide="menu" id="menu-icon-open" class="w-6 h-6"></i>
+                        <i data-lucide="x" id="menu-icon-close" class="w-6 h-6 hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-b border-gray-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#services" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">Services</a>
+            <a href="#portfolio" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">Work</a>
+            <a href="#testimonials" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">Reviews</a>
+            <a href="#pricing" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/50">Pricing</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2.5 text-center rounded-xl text-base font-semibold text-white bg-brand-600 hover:bg-brand-500 transition-colors mt-4">
+                Start a Project
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-24">
+        <!-- Hero Section -->
+        <section class="relative min-h-[90vh] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Text Column -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <!-- Status Badge -->
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full glass border border-brand-500/30 text-xs sm:text-sm font-medium text-brand-cyan">
+                        <span class="flex h-2 w-2 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-cyan opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-cyan"></span>
+                        </span>
+                        <span>Available for Q4 Projects & Retainers</span>
+                    </div>
+
+                    <!-- Main Headline -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none">
+                        We build <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-cyan via-brand-500 to-brand-purple">ultra-fast</span> web experiences for 
+                        <span class="inline-block min-w-[200px] text-left text-white border-b-4 border-brand-500" id="typed-text"></span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Transforming high-growth startups and visionary brands with React, Tailwind, and cutting-edge web technology. Scalable, sleek, and pixel-perfect.
+                    </p>
+
+                    <!-- Hero Action Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-brand-500 to-brand-purple hover:from-brand-600 hover:to-brand-purple/90 glow-effect transition-all duration-300 flex items-center justify-center space-x-2 group">
+                            <span>Explore Showcase</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl text-base font-semibold text-gray-300 hover:text-white glass border border-gray-700 hover:border-gray-500 transition-all duration-300 flex items-center justify-center space-x-2">
+                            <i data-lucide="terminal" class="w-5 h-5 text-brand-cyan"></i>
+                            <span>Get Code Estimate</span>
+                        </a>
+                    </div>
+
+                    <!-- Tech Stack Pills -->
+                    <div class="pt-6 border-t border-gray-800/80">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">Powering Next-Gen Stack</p>
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-4 text-gray-400 text-sm">
+                            <span class="flex items-center space-x-1.5"><i data-lucide="atom" class="w-4 h-4 text-cyan-400"></i><span>React / Next.js</span></span>
+                            <span class="flex items-center space-x-1.5"><i data-lucide="wind" class="w-4 h-4 text-teal-400"></i><span>Tailwind CSS</span></span>
+                            <span class="flex items-center space-x-1.5"><i data-lucide="zap" class="w-4 h-4 text-yellow-400"></i><span>TypeScript</span></span>
+                            <span class="flex items-center space-x-1.5"><i data-lucide="cpu" class="w-4 h-4 text-purple-400"></i><span>Node / GraphQL</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Live Preview Code Window -->
+                <div class="lg:col-span-5 animate-float">
+                    <div class="rounded-2xl glass border border-gray-800 shadow-2xl overflow-hidden text-left glow-effect">
+                        <!-- Code Header -->
+                        <div class="bg-gray-900/90 px-4 py-3 border-b border-gray-800 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                                <span class="text-xs text-gray-400 font-mono ml-2">App.tsx — AuraEngine v2.4</span>
+                            </div>
+                            <span class="text-xs px-2 py-0.5 rounded bg-brand-500/20 text-brand-cyan font-mono">TypeScript</span>
+                        </div>
+                        
+                        <!-- Interactive Code Body -->
+                        <div class="p-5 font-mono text-xs sm:text-sm space-y-3 bg-dark-bg/90 overflow-x-auto">
+                            <div>
+                                <span class="text-purple-400">import</span> <span class="text-yellow-300">{ AuraClient, HighVelocity }</span> <span class="text-purple-400">from</span> <span class="text-green-300">'@aura/core'</span>;
+                            </div>
+                            <div class="pt-2">
+                                <span class="text-blue-400">const</span> <span class="text-cyan-300">projectConfig</span> = {
+                            </div>
+                            <div class="pl-4">
+                                <span class="text-gray-400">performanceScore:</span> <span class="text-emerald-400">100</span>,
+                            </div>
+                            <div class="pl-4">
+                                <span class="text-gray-400">responsiveDesign:</span> <span class="text-purple-400">true</span>,
+                            </div>
+                            <div class="pl-4">
+                                <span class="text-gray-400">seoOptimization:</span> <span class="text-green-300">'Automated'</span>,
+                            </div>
+                            <div class="pl-4">
+                                <span class="text-gray-400">securityShield:</span> <span class="text-green-300">'Enterprise Grade'</span>
+                            </div>
+                            <div>};</div>
+                            <div class="pt-2">
+                                <span class="text-purple-400">export default async function</span> <span class="text-yellow-300">LaunchSite</span>() {
+                            </div>
+                            <div class="pl-4">
+                                <span class="text-purple-400">await</span> <span class="text-cyan-300">AuraClient</span>.<span class="text-blue-400">deploy</span>(projectConfig);
+                            </div>
+                            <div class="pl-4 text-emerald-400">// Status: 🚀 Live & Accelerated</div>
+                            <div>}</div>
+                        </div>
+
+                        <!-- Live Console Interactive Output -->
+                        <div class="bg-gray-900/90 p-4 border-t border-gray-800 flex items-center justify-between text-xs font-mono">
+                            <div class="flex items-center space-x-2 text-gray-400">
+                                <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span>Build completed in <span class="text-emerald-400">240ms</span></span>
+                            </div>
+                            <button id="run-code-btn" class="px-3 py-1 rounded bg-brand-500/20 hover:bg-brand-500/40 text-brand-cyan transition-colors">
+                                Run Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-brand-cyan mb-3">Our Core Capabilities</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Engineered for Maximum Digital Impact</p>
+                    <p class="mt-4 text-gray-400 text-base">We combine pixel-perfect design aesthetics with bulletproof modern architecture to deliver websites that turn visitors into loyal clients.</p>
+                </div>
+
+                <!-- Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Service 1 -->
+                    <div class="glass p-8 rounded-2xl border border-gray-800 hover:border-brand-500/50 transition-all duration-300 hover:-translate-y-2 group glow-effect-hover">
+                        <div class="w-14 h-14 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-500 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300 mb-6">
+                            <i data-lucide="layout" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Custom Web Apps</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            High-performance React/Next.js single-page apps crafted with tailored UI components and fast server side rendering.
+                        </p>
+                        <ul class="space-y-2 text-xs text-gray-400">
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-2"></i>React & Vue Architecture</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-2"></i>Sub-second Page Load</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="glass p-8 rounded-2xl border border-gray-800 hover:border-brand-purple/50 transition-all duration-300 hover:-translate-y-2 group glow-effect-hover">
+                        <div class="w-14 h-14 rounded-xl bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple group-hover:bg-brand-purple group-hover:text-white transition-all duration-300 mb-6">
+                            <i data-lucide="palette" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">UI/UX Product Design</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Human-centric interfaces, interactive Figma wireframes, and design system creation tailored to your identity.
+                        </p>
+                        <ul class="space-y-2 text-xs text-gray-400">
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-purple mr-2"></i>Interactive Prototypes</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-purple mr-2"></i>Design Tokens & Systems</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="glass p-8 rounded-2xl border border-gray-800 hover:border-brand-cyan/50 transition-all duration-300 hover:-translate-y-2 group glow-effect-hover">
+                        <div class="w-14 h-14 rounded-xl bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan group-hover:bg-brand-cyan group-hover:text-dark-bg transition-all duration-300 mb-6">
+                            <i data-lucide="shopping-bag" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">E-Commerce Platforms</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Headless Shopify or custom e-commerce setups with frictionless checkout workflows and conversion drivers.
+                        </p>
+                        <ul class="space-y-2 text-xs text-gray-400">
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-2"></i>Stripe / Paypal Gateways</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-2"></i>Custom Product Builder</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="glass p-8 rounded-2xl border border-gray-800 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-2 group glow-effect-hover">
+                        <div class="w-14 h-14 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 mb-6">
+                            <i data-lucide="sparkles" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">AI & API Integration</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Smart OpenAI / Claude integrations, custom chatbots, automated workflows, and robust REST/GraphQL APIs.
+                        </p>
+                        <ul class="space-y-2 text-xs text-gray-400">
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-emerald-400 mr-2"></i>LLM Chat Assistants</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-emerald-400 mr-2"></i>Automated Webhooks</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Showcase Section (Filterable Grid) -->
+        <section id="portfolio" class="py-24 px-4 sm:px-6 lg:px-8 bg-black/20">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <h2 class="text-xs font-bold uppercase tracking-widest text-brand-purple mb-3">Curated Portfolio</h2>
+                        <p class="text-3xl sm:text-4xl font-extrabold text-white">Recent Works & Case Studies</p>
+                    </div>
+
+                    <!-- Category Filter Tabs -->
+                    <div class="flex flex-wrap gap-2 mt-6 md:mt-0 bg-dark-card p-1.5 rounded-xl border border-gray-800" id="filter-container">
+                        <button class="filter-btn active px-4 py-2 rounded-lg text-xs font-semibold transition-all bg-brand-500 text-white" data-filter="all">All Projects</button>
+                        <button class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all" data-filter="webapp">Web Apps</button>
+                        <button class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all" data-filter="ecommerce">E-Commerce</button>
+                        <button class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all" data-filter="ai">AI Tools</button>
+                    </div>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+                    
+                    <!-- Item 1 -->
+                    <div class="project-card glass rounded-2xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-300 group" data-category="webapp">
+                        <div class="relative overflow-hidden aspect-video bg-gray-900">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="SaaS Dashboard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-dark-bg/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-3">
+                                <button class="preview-btn p-3 rounded-full bg-brand-500 text-white hover:bg-brand-600 transition-colors" data-title="Nexus Analytics SaaS Dashboard" data-desc="Real-time analytics platform built with React, Tailwind, and WebSockets. Increased client conversion rate by 42%.">
+                                    <i data-lucide="eye" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-medium text-brand-cyan uppercase tracking-wider">Web App</span>
+                            <h3 class="text-xl font-bold text-white mt-1 mb-2">Nexus Analytics Dashboard</h3>
+                            <p class="text-gray-400 text-sm mb-4">High-throughput data visualization suite for enterprise fintech.</p>
+                            <div class="flex flex-wrap gap-2 text-[11px] font-mono text-gray-300">
+                                <span class="px-2 py-1 rounded bg-gray-800">React</span>
+                                <span class="px-2 py-1 rounded bg-gray-800">Tailwind</span>
+                                <span class="px-2 py-1 rounded bg-gray-800">Recharts</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="project-card glass rounded-2xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-300 group" data-category="ecommerce">
+                        <div class="relative overflow-hidden aspect-video bg-gray-900">
+                            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" alt="E-Commerce Apparel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-dark-bg/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-3">
+                                <button class="preview-btn p-3 rounded-full bg-brand-500 text-white hover:bg-brand-600 transition-colors" data-title="Velour Minimalist Apparel Store" data-desc="Ultra-sleek luxury fashion storefront powered by Headless Shopify and Next.js ISR.">
+                                    <i data-lucide="eye" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-medium text-brand-purple uppercase tracking-wider">E-Commerce</span>
+                            <h3 class="text-xl font-bold text-white mt-1 mb-2">Velour Luxury Storefront</h3>
+                            <p class="text-gray-400 text-sm mb-4">Next.js headless store with custom 3D product view capabilities.</p>
+                            <div class="flex flex-wrap gap-2 text-[11px] font-mono text-gray-300">
+                                <span class="px-2 py-1 rounded bg-gray-800">Next.js</span>
+                                <span class="px-2 py-1 rounded bg-gray-800">Shopify API</span>
+                                <span class="px-2 py-1 rounded bg-gray-800">Framer Motion</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="project-card glass rounded-2xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-300 group" data-category="ai">
+                        <div class="relative overflow-hidden aspect-video bg-gray-900">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="AI Content Suite" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-dark-bg/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center space-x-3">
+                                <button class="preview-btn p-3 rounded-full bg-brand-500 text-white hover:bg-brand-600 transition-colors" data-title="Synthetix AI Copilot" data-desc="AI generative assistant tool for marketing teams with streaming response tokens and dark theme workspace.">
+                                    <i data-lucide="eye" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-medium text-emerald-400 uppercase tracking-wider">AI Tool</span>
+                            <h3 class="text-xl font-bold text-white mt-1 mb-2">Synthetix Content Copilot</h3>
+                            <p class="text-gray-400 text-sm mb-4">Generative AI assistant app integrated with OpenAI GPT-4o webhooks.</p>
+                            <div class="flex flex-wrap gap-2 text-[11px] font-mono text-gray-300">
+                                <span class="px-2 py-1 rounded bg-gray-800">TypeScript</span>
+                                <span class="px-2 py-1 rounded bg-gray-800">OpenAI API</span>
+                                <span class="px-2 py-1 rounded bg-gray-800">Tailwind</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Carousel Section -->
+        <section id="testimonials" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-4xl mx-auto text-center">
+                <i data-lucide="quote" class="w-12 h-12 text-brand-500/40 mx-auto mb-6"></i>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-12">Trusted by Founders Worldwide</h2>
+
+                <div class="relative glass rounded-3xl p-8 sm:p-12 border border-gray-800 min-h-[260px] flex flex-col justify-between">
+                    <!-- Dynamic Testimonial Content -->
+                    <div id="testimonial-container" class="transition-opacity duration-300">
+                        <p id="testimonial-text" class="text-lg sm:text-xl text-gray-300 italic mb-8">
+                            "AuraCode redesigned our web platform in under 3 weeks. Our Lighthouse performance jumped to 99 and conversion improved dramatically!"
+                        </p>
+                        <div class="flex items-center justify-center space-x-4">
+                            <img id="testimonial-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Client Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-brand-500">
+                            <div class="text-left">
+                                <h4 id="testimonial-name" class="text-base font-bold text-white">Sarah Jenkins</h4>
+                                <p id="testimonial-role" class="text-xs text-gray-400">CTO at FinEdge Global</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Controls -->
+                    <div class="flex justify-center space-x-4 mt-8">
+                        <button id="prev-testimonial" class="p-2 rounded-full glass border border-gray-700 hover:border-brand-500 text-gray-300 hover:text-white transition-colors">
+                            <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                        </button>
+                        <button id="next-testimonial" class="p-2 rounded-full glass border border-gray-700 hover:border-brand-500 text-gray-300 hover:text-white transition-colors">
+                            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing / Package Builder Section -->
+        <section id="pricing" class="py-24 px-4 sm:px-6 lg:px-8 bg-black/30">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-brand-cyan mb-3">Transparent Investment</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Flexible Project Packages</p>
+                    <p class="mt-4 text-gray-400 text-base">Select a tier or customize your custom development package below.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Starter Tier -->
+                    <div class="glass rounded-3xl p-8 border border-gray-800 flex flex-col justify-between hover:border-gray-700 transition-all">
+                        <div>
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Starter Landing</span>
+                            <div class="mt-4 flex items-baseline">
+                                <span class="text-4xl font-extrabold text-white">$1,499</span>
+                                <span class="text-gray-400 text-sm ml-2">/ project</span>
+                            </div>
+                            <p class="text-gray-400 text-xs mt-3">Ideal for startups needing a high-converting single page website.</p>
+                            <ul class="mt-8 space-y-4 text-sm text-gray-300">
+                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>1 High-converting Landing Page</li>
+                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>Tailwind CSS Responsive Design</li>
+                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>Contact Form Integration</li>
+                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>5 Days Delivery Time</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="mt-8 w-full py-3 rounded-xl text-center text-sm font-semibold text-white bg-gray-800 hover:bg-gray-700 transition-colors block">
+                            Select Starter
+                        </a>
+                    </div>
+
+                    <!-- Pro Tier (Highlighted) -->
+                    <div class="glass rounded-3xl p-8 border-2 border-brand-500 relative flex flex-col justify-between shadow-xl shadow-brand-500/10">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brand-500 text-white text-xs font-bold uppercase tracking-wider">
+                            Most Popular
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-brand-cyan uppercase tracking-wider">Full Web App</span>
+                            <div class="mt-4 flex items-baseline">
+                                <span class="text-4xl font-extrabold text-white">$3,800</span>
+                                <span class="text-gray-400 text-sm ml-2">/ project</span>
+                            </div>
+                            <p class="text-gray-400 text-xs mt-3">Multi-page website or React web application with CMS backend.</p>
+                            <ul class="mt-8 space-y-4 text-sm text-gray-300">
+                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>Up to 7 Custom React Pages</li>
+                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>Headless CMS or API Setup</li>
+                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>Advanced Interactive Animations</li>
+                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>SEO & Performance Optimization</li>
+                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>2 Weeks Free Maintenance</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="mt-8 w-full py-3.5 rounded-xl text-center text-sm font-semibold text-white bg-brand-500 hover:bg-brand-600 transition-colors shadow-lg shadow-brand-500/30 block">
+                            Get Started
+                        </a>
+                    </div>
+
+                    <!-- Enterprise Tier -->
+                    <div class="glass rounded-3xl p-8 border border-gray-800 flex flex-col justify-between hover:border-gray-700 transition-all">
+                        <div>
+                            <span class="text-xs font-bold text-brand-purple uppercase tracking-wider">Enterprise & Retainer</span>
+                            <div class="mt-4 flex items-baseline">
+                                <span class="text-4xl font-extrabold text-white">Custom</span>
+                            </div>
+                            <p class="text-gray-400 text-xs mt-3">Dedicated development team for continuous web products and platforms.</p>
+                            <ul class="mt-8 space-y-4 text-sm text-gray-300">
+                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-purple mr-3"></i>Dedicated Lead Engineer</li>
+                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-purple mr-3"></i>Custom AI Model / Webhooks</li>
+                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-purple mr-3"></i>24/7 SLA Priority Support</li>
+                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-purple mr-3"></i>Unlimited Scaling Support</li>
+                            </ul>
+                        </div>
+                        <a href="#contact" class="mt-8 w-full py-3 rounded-xl text-center text-sm font-semibold text-white bg-gray-800 hover:bg-gray-700 transition-colors block">
+                            Contact Sales
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Contact Form Section -->
+        <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-5xl mx-auto glass rounded-3xl p-8 sm:p-14 border border-gray-800 relative overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Column -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let's build something epic together.</h2>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Have a website design in mind or need help converting your client brief into code? Fill in the details and we'll reply within 12 hours.
+                        </p>
+
+                        <div class="space-y-4 pt-4">
+                            <div class="flex items-center space-x-3 text-sm text-gray-300">
+                                <div class="w-10 h-10 rounded-lg bg-brand-500/10 flex items-center justify-center text-brand-cyan">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
+                                </div>
+                                <span>hello@auracode.dev</span>
+                            </div>
+                            <div class="flex items-center space-x-3 text-sm text-gray-300">
+                                <div class="w-10 h-10 rounded-lg bg-brand-purple/10 flex items-center justify-center text-brand-purple">
+                                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                </div>
+                                <span>Global / Remote Studio</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column (Form) -->
+                    <div class="lg:col-span-7">
+                        <form id="contact-form" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Your Name</label>
+                                    <input type="text" id="form-name" placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-dark-bg border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 transition-colors text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Email Address</label>
+                                    <input type="email" id="form-email" placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-dark-bg border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 transition-colors text-sm">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Project Type</label>
+                                <select id="form-type" class="w-full px-4 py-3 rounded-xl bg-dark-bg border border-gray-800 text-white focus:outline-none focus:border-brand-500 transition-colors text-sm">
+                                    <option value="landing">Landing Page</option>
+                                    <option value="webapp">Full React Web Application</option>
+                                    <option value="ecommerce">E-Commerce Store</option>
+                                    <option value="custom">Custom Development / Consultation</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Project Details</label>
+                                <textarea id="form-message" rows="4" placeholder="Tell us about your project requirements or reference websites..." class="w-full px-4 py-3 rounded-xl bg-dark-bg border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 transition-colors text-sm resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-brand-500 via-brand-purple to-brand-cyan bg-[length:200%_auto] animate-gradient-x hover:shadow-lg hover:shadow-brand-500/25 transition-all duration-300 flex items-center justify-center space-x-2">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                <span>Send Project Brief</span>
+                            </button>
+
+                            <!-- Alert Box Message -->
+                            <div id="form-alert" class="hidden p-4 rounded-xl text-xs font-medium text-center"></div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-card border-t border-gray-800 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white">
+                    <i data-lucide="code" class="w-4 h-4"></i>
+                </div>
+                <span class="text-lg font-bold text-white">AuraCode</span>
+                <span class="text-xs text-gray-500 ml-4">© 2026 AuraCode Agency. All rights reserved.</span>
+            </div>
+
+            <div class="flex space-x-6 text-gray-400">
+                <a href="#" class="hover:text-brand-cyan transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-brand-cyan transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-brand-cyan transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Interactive Live Preview Modal -->
+    <div id="preview-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="glass max-w-2xl w-full rounded-2xl p-6 border border-gray-700 relative">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <h3 id="modal-title" class="text-2xl font-bold text-white mb-2"></h3>
+            <p id="modal-desc" class="text-gray-300 text-sm leading-relaxed mb-6"></p>
+            <div class="bg-gray-900 rounded-xl p-4 text-xs font-mono text-emerald-400 mb-6 border border-gray-800">
+                Status: Live Interactive Component Ready
+            </div>
+            <button id="modal-dismiss-btn" class="w-full py-3 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition-colors">
+                Close Preview
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIconOpen.classList.toggle('hidden');
+            menuIconClose.classList.toggle('hidden');
+        });
+
+        // Close Mobile Menu on Link Click
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIconOpen.classList.remove('hidden');
+                menuIconClose.classList.add('hidden');
+            });
+        });
+
+        // Typing Text Effect for Hero Headline
+        const typedTextElement = document.getElementById('typed-text');
+        const words = ['Startups.', 'SaaS Apps.', 'E-Commerce.', 'AI Tools.'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                typedTextElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedTextElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 60 : 120;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 2000; // Pause at end of word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 400;
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+        typeEffect();
+
+        // Portfolio Filter Tabs Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-brand-500', 'text-white');
+                    b.classList.add('text-gray-400');
+                });
+                btn.classList.add('bg-brand-500', 'text-white');
+                btn.classList.remove('text-gray-400');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Testimonial Carousel Data & Logic
+        const testimonials = [
+            {
+                text: '"AuraCode redesigned our web platform in under 3 weeks. Our Lighthouse performance jumped to 99 and conversion improved dramatically!"',
+                name: 'Sarah Jenkins',
+                role: 'CTO at FinEdge Global',
+                avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'
+            },
+            {
+                text: '"The Tailwind and React code quality was so clean that our internal team picked it up immediately. Top tier execution."',
+                name: 'Marcus Vance',
+                role: 'Founder & CEO at SaaSify',
+                avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80'
+            },
+            {
+                text: '"Their attention to UI animations and mobile responsiveness gave our brand an instant enterprise-grade feel."',
+                name: 'Elena Rostova',
+                role: 'Head of Product at Synthetix AI',
+                avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80'
+            }
+        ];
+
+        let currentTestimonial = 0;
+        const textEl = document.getElementById('testimonial-text');
+        const nameEl = document.getElementById('testimonial-name');
+        const roleEl = document.getElementById('testimonial-role');
+        const avatarEl = document.getElementById('testimonial-avatar');
+
+        function updateTestimonial(index) {
+            textEl.textContent = testimonials[index].text;
+            nameEl.textContent = testimonials[index].name;
+            roleEl.textContent = testimonials[index].role;
+            avatarEl.src = testimonials[index].avatar;
+        }
+
+        document.getElementById('next-testimonial').addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            updateTestimonial(currentTestimonial);
+        });
+
+        document.getElementById('prev-testimonial').addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            updateTestimonial(currentTestimonial);
+        });
+
+        // Live Preview Modal
+        const modal = document.getElementById('preview-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const closeModalBtn = document.getElementById('close-modal');
+        const modalDismissBtn = document.getElementById('modal-dismiss-btn');
+
+        document.querySelectorAll('.preview-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                modalTitle.textContent = btn.getAttribute('data-title');
+                modalDesc.textContent = btn.getAttribute('data-desc');
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            });
+        });
+
+        const closeModal = () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        };
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modalDismissBtn.addEventListener('click', closeModal);
+
+        // Code Sandbox Run Button
+        document.getElementById('run-code-btn').addEventListener('click', () => {
+            const btn = document.getElementById('run-code-btn');
+            btn.textContent = 'Compiled & Running...';
+            btn.classList.add('text-emerald-400');
+            setTimeout(() => {
+                btn.textContent = 'Run Preview';
+            }, 2000);
+        });
+
+        // Interactive Contact Form Validation & Submission Handling
+        const contactForm = document.getElementById('contact-form');
+        const formAlert = document.getElementById('form-alert');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('form-name').value.trim();
+            const email = document.getElementById('form-email').value.trim();
+            const message = document.getElementById('form-message').value.trim();
+
+            if (!name || !email || !message) {
+                formAlert.className = "p-4 rounded-xl text-xs font-medium text-center bg-red-500/20 text-red-400 border border-red-500/30 block";
+                formAlert.textContent = "Please fill in all fields before submitting.";
+                return;
+            }
+
+            // Simulate Successful Submission
+            formAlert.className = "p-4 rounded-xl text-xs font-medium text-center bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 block";
+            formAlert.textContent = "Thank you! Your project brief has been received. We will contact you shortly.";
+            contactForm.reset();
+
+            setTimeout(() => {
+                formAlert.classList.add('hidden');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
