@@ -4,98 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AuraCode | Next-Gen Web Development Agency</title>
- <!--This is a student pracitce project>
-
-    <!--Tailwind CSS CDN -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
+    <!-- Google Fonts: Inter & Fira Code -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#eef2ff',
-                            100: '#e0e7ff',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
-                            cyan: '#06b6d4',
-                            purple: '#a855f7',
-                        },
-                        dark: {
-                            bg: '#090d16',
-                            card: '#111827',
-                            border: '#1f2937',
-                        }
-                    },
-                    animation: {
-                        'gradient-x': 'gradient-x 15s ease infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        'gradient-x': {
-                            '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
-                            '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
-                        },
-                        'float': {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-12px)' },
-                        },
-                        'pulse-glow': {
-                            '0%, 100%': { opacity: '0.4' },
-                            '50%': { opacity: '0.8' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Custom scrollbar and glassmorphism styling */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #090d16;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1f2937;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #374151;
-        }
-        .glass {
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .glass-nav {
-            background: rgba(9, 13, 22, 0.8);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .glow-effect {
-            box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.25);
-        }
-        .glow-effect-hover:hover {
-            box-shadow: 0 0 35px 0px rgba(168, 85, 247, 0.35);
-        }
-    </style>
+    
+    <!-- Custom CSS File Link -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-dark-bg text-gray-100 font-sans antialiased selection:bg-brand-500 selection:text-white overflow-x-hidden">
 
@@ -279,7 +198,6 @@
 
                 <!-- Cards Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    
                     <!-- Service 1 -->
                     <div class="glass p-8 rounded-2xl border border-gray-800 hover:border-brand-500/50 transition-all duration-300 hover:-translate-y-2 group glow-effect-hover">
                         <div class="w-14 h-14 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center text-brand-500 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300 mb-6">
@@ -339,7 +257,6 @@
                             <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-emerald-400 mr-2"></i>Automated Webhooks</li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -364,7 +281,6 @@
 
                 <!-- Projects Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
-                    
                     <!-- Item 1 -->
                     <div class="project-card glass rounded-2xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-300 group" data-category="webapp">
                         <div class="relative overflow-hidden aspect-video bg-gray-900">
@@ -430,7 +346,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -450,18 +365,19 @@
                         <div class="flex items-center justify-center space-x-4">
                             <img id="testimonial-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Client Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-brand-500">
                             <div class="text-left">
-                                <h4 id="testimonial-name" class="text-base font-bold text-white">Sarah Jenkins</h4>
-                                <p id="testimonial-role" class="text-xs text-gray-400">CTO at FinEdge Global</p>
+                                <h4 id="testimonial-name" class="font-bold text-white text-base">Sarah Jenkins</h4>
+                                <p id="testimonial-role" class="text-xs text-gray-400">CEO at SaaSify</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Navigation Controls -->
-                    <div class="flex justify-center space-x-4 mt-8">
-                        <button id="prev-testimonial" class="p-2 rounded-full glass border border-gray-700 hover:border-brand-500 text-gray-300 hover:text-white transition-colors">
+                    <!-- Carousel Controls -->
+                    <div class="flex justify-center items-center space-x-4 mt-8 pt-6 border-t border-gray-800/60">
+                        <button id="prev-testimonial-btn" class="p-2 rounded-full hover:bg-gray-800 text-gray-400 hover:text-white transition-colors">
                             <i data-lucide="chevron-left" class="w-5 h-5"></i>
                         </button>
-                        <button id="next-testimonial" class="p-2 rounded-full glass border border-gray-700 hover:border-brand-500 text-gray-300 hover:text-white transition-colors">
+                        <div id="testimonial-dots" class="flex space-x-2"></div>
+                        <button id="next-testimonial-btn" class="p-2 rounded-full hover:bg-gray-800 text-gray-400 hover:text-white transition-colors">
                             <i data-lucide="chevron-right" class="w-5 h-5"></i>
                         </button>
                     </div>
@@ -469,384 +385,43 @@
             </div>
         </section>
 
-        <!-- Pricing / Package Builder Section -->
-        <section id="pricing" class="py-24 px-4 sm:px-6 lg:px-8 bg-black/30">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <h2 class="text-xs font-bold uppercase tracking-widest text-brand-cyan mb-3">Transparent Investment</h2>
-                    <p class="text-3xl sm:text-4xl font-extrabold text-white">Flexible Project Packages</p>
-                    <p class="mt-4 text-gray-400 text-base">Select a tier or customize your custom development package below.</p>
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 bg-black/30">
+            <div class="max-w-3xl mx-auto glass p-8 sm:p-12 rounded-3xl border border-gray-800 glow-effect">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-white">Let's Build Something Great</h2>
+                    <p class="text-gray-400 mt-2 text-sm">Have a project in mind? Fill in the details below and we'll get back to you within 24 hours.</p>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Starter Tier -->
-                    <div class="glass rounded-3xl p-8 border border-gray-800 flex flex-col justify-between hover:border-gray-700 transition-all">
+                
+                <form id="contact-form" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Starter Landing</span>
-                            <div class="mt-4 flex items-baseline">
-                                <span class="text-4xl font-extrabold text-white">$1,499</span>
-                                <span class="text-gray-400 text-sm ml-2">/ project</span>
-                            </div>
-                            <p class="text-gray-400 text-xs mt-3">Ideal for startups needing a high-converting single page website.</p>
-                            <ul class="mt-8 space-y-4 text-sm text-gray-300">
-                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>1 High-converting Landing Page</li>
-                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>Tailwind CSS Responsive Design</li>
-                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>Contact Form Integration</li>
-                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>5 Days Delivery Time</li>
-                            </ul>
-                        </div>
-                        <a href="#contact" class="mt-8 w-full py-3 rounded-xl text-center text-sm font-semibold text-white bg-gray-800 hover:bg-gray-700 transition-colors block">
-                            Select Starter
-                        </a>
-                    </div>
-
-                    <!-- Pro Tier (Highlighted) -->
-                    <div class="glass rounded-3xl p-8 border-2 border-brand-500 relative flex flex-col justify-between shadow-xl shadow-brand-500/10">
-                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brand-500 text-white text-xs font-bold uppercase tracking-wider">
-                            Most Popular
+                            <label class="block text-xs font-semibold text-gray-300 mb-2">Your Name</label>
+                            <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-dark-bg border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 transition-colors">
                         </div>
                         <div>
-                            <span class="text-xs font-bold text-brand-cyan uppercase tracking-wider">Full Web App</span>
-                            <div class="mt-4 flex items-baseline">
-                                <span class="text-4xl font-extrabold text-white">$3,800</span>
-                                <span class="text-gray-400 text-sm ml-2">/ project</span>
-                            </div>
-                            <p class="text-gray-400 text-xs mt-3">Multi-page website or React web application with CMS backend.</p>
-                            <ul class="mt-8 space-y-4 text-sm text-gray-300">
-                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>Up to 7 Custom React Pages</li>
-                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>Headless CMS or API Setup</li>
-                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>Advanced Interactive Animations</li>
-                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>SEO & Performance Optimization</li>
-                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-cyan mr-3"></i>2 Weeks Free Maintenance</li>
-                            </ul>
-                        </div>
-                        <a href="#contact" class="mt-8 w-full py-3.5 rounded-xl text-center text-sm font-semibold text-white bg-brand-500 hover:bg-brand-600 transition-colors shadow-lg shadow-brand-500/30 block">
-                            Get Started
-                        </a>
-                    </div>
-
-                    <!-- Enterprise Tier -->
-                    <div class="glass rounded-3xl p-8 border border-gray-800 flex flex-col justify-between hover:border-gray-700 transition-all">
-                        <div>
-                            <span class="text-xs font-bold text-brand-purple uppercase tracking-wider">Enterprise & Retainer</span>
-                            <div class="mt-4 flex items-baseline">
-                                <span class="text-4xl font-extrabold text-white">Custom</span>
-                            </div>
-                            <p class="text-gray-400 text-xs mt-3">Dedicated development team for continuous web products and platforms.</p>
-                            <ul class="mt-8 space-y-4 text-sm text-gray-300">
-                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-purple mr-3"></i>Dedicated Lead Engineer</li>
-                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-purple mr-3"></i>Custom AI Model / Webhooks</li>
-                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-purple mr-3"></i>24/7 SLA Priority Support</li>
-                                <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-purple mr-3"></i>Unlimited Scaling Support</li>
-                            </ul>
-                        </div>
-                        <a href="#contact" class="mt-8 w-full py-3 rounded-xl text-center text-sm font-semibold text-white bg-gray-800 hover:bg-gray-700 transition-colors block">
-                            Contact Sales
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interactive Contact Form Section -->
-        <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 relative">
-            <div class="max-w-5xl mx-auto glass rounded-3xl p-8 sm:p-14 border border-gray-800 relative overflow-hidden">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    
-                    <!-- Left Column -->
-                    <div class="lg:col-span-5 space-y-6">
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Let's build something epic together.</h2>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Have a website design in mind or need help converting your client brief into code? Fill in the details and we'll reply within 12 hours.
-                        </p>
-
-                        <div class="space-y-4 pt-4">
-                            <div class="flex items-center space-x-3 text-sm text-gray-300">
-                                <div class="w-10 h-10 rounded-lg bg-brand-500/10 flex items-center justify-center text-brand-cyan">
-                                    <i data-lucide="mail" class="w-5 h-5"></i>
-                                </div>
-                                <span>hello@auracode.dev</span>
-                            </div>
-                            <div class="flex items-center space-x-3 text-sm text-gray-300">
-                                <div class="w-10 h-10 rounded-lg bg-brand-purple/10 flex items-center justify-center text-brand-purple">
-                                    <i data-lucide="map-pin" class="w-5 h-5"></i>
-                                </div>
-                                <span>Global / Remote Studio</span>
-                            </div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-2">Your Email</label>
+                            <input type="email" required placeholder="john@company.com" class="w-full px-4 py-3 rounded-xl bg-dark-bg border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 transition-colors">
                         </div>
                     </div>
-
-                    <!-- Right Column (Form) -->
-                    <div class="lg:col-span-7">
-                        <form id="contact-form" class="space-y-4">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Your Name</label>
-                                    <input type="text" id="form-name" placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-dark-bg border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 transition-colors text-sm">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Email Address</label>
-                                    <input type="email" id="form-email" placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-dark-bg border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 transition-colors text-sm">
-                                </div>
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-semibold text-gray-300 mb-1">Project Type</label>
-                                <select id="form-type" class="w-full px-4 py-3 rounded-xl bg-dark-bg border border-gray-800 text-white focus:outline-none focus:border-brand-500 transition-colors text-sm">
-                                    <option value="landing">Landing Page</option>
-                                    <option value="webapp">Full React Web Application</option>
-                                    <option value="ecommerce">E-Commerce Store</option>
-                                    <option value="custom">Custom Development / Consultation</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-semibold text-gray-300 mb-1">Project Details</label>
-                                <textarea id="form-message" rows="4" placeholder="Tell us about your project requirements or reference websites..." class="w-full px-4 py-3 rounded-xl bg-dark-bg border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 transition-colors text-sm resize-none"></textarea>
-                            </div>
-
-                            <button type="submit" class="w-full py-4 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-brand-500 via-brand-purple to-brand-cyan bg-[length:200%_auto] animate-gradient-x hover:shadow-lg hover:shadow-brand-500/25 transition-all duration-300 flex items-center justify-center space-x-2">
-                                <i data-lucide="send" class="w-4 h-4"></i>
-                                <span>Send Project Brief</span>
-                            </button>
-
-                            <!-- Alert Box Message -->
-                            <div id="form-alert" class="hidden p-4 rounded-xl text-xs font-medium text-center"></div>
-                        </form>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-2">Project Overview</label>
+                        <textarea rows="4" required placeholder="Tell us about your project, goals, and timeline..." class="w-full px-4 py-3 rounded-xl bg-dark-bg border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 transition-colors"></textarea>
                     </div>
-
-                </div>
+                    <button type="submit" class="w-full py-4 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-brand-500 via-brand-purple to-brand-cyan hover:opacity-95 transition-opacity glow-effect">
+                        Send Project Proposal
+                    </button>
+                </form>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark-card border-t border-gray-800 py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-            
-            <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white">
-                    <i data-lucide="code" class="w-4 h-4"></i>
-                </div>
-                <span class="text-lg font-bold text-white">AuraCode</span>
-                <span class="text-xs text-gray-500 ml-4">© 2026 AuraCode Agency. All rights reserved.</span>
-            </div>
-
-            <div class="flex space-x-6 text-gray-400">
-                <a href="#" class="hover:text-brand-cyan transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
-                <a href="#" class="hover:text-brand-cyan transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-                <a href="#" class="hover:text-brand-cyan transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-            </div>
-
-        </div>
+    <footer class="border-t border-gray-800 py-8 text-center text-xs text-gray-500">
+        <p>© 2026 AuraCode. All rights reserved. Built with React & Tailwind CSS.</p>
     </footer>
 
-    <!-- Interactive Live Preview Modal -->
-    <div id="preview-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
-        <div class="glass max-w-2xl w-full rounded-2xl p-6 border border-gray-700 relative">
-            <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white">
-                <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
-            <h3 id="modal-title" class="text-2xl font-bold text-white mb-2"></h3>
-            <p id="modal-desc" class="text-gray-300 text-sm leading-relaxed mb-6"></p>
-            <div class="bg-gray-900 rounded-xl p-4 text-xs font-mono text-emerald-400 mb-6 border border-gray-800">
-                Status: Live Interactive Component Ready
-            </div>
-            <button id="modal-dismiss-btn" class="w-full py-3 bg-brand-500 hover:bg-brand-600 text-white font-semibold rounded-xl transition-colors">
-                Close Preview
-            </button>
-        </div>
-    </div>
-
-    <!-- JavaScript Logic -->
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIconOpen = document.getElementById('menu-icon-open');
-        const menuIconClose = document.getElementById('menu-icon-close');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            menuIconOpen.classList.toggle('hidden');
-            menuIconClose.classList.toggle('hidden');
-        });
-
-        // Close Mobile Menu on Link Click
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuIconOpen.classList.remove('hidden');
-                menuIconClose.classList.add('hidden');
-            });
-        });
-
-        // Typing Text Effect for Hero Headline
-        const typedTextElement = document.getElementById('typed-text');
-        const words = ['Startups.', 'SaaS Apps.', 'E-Commerce.', 'AI Tools.'];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-
-        function typeEffect() {
-            const currentWord = words[wordIndex];
-            
-            if (isDeleting) {
-                typedTextElement.textContent = currentWord.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typedTextElement.textContent = currentWord.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 60 : 120;
-
-            if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 2000; // Pause at end of word
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                typeSpeed = 400;
-            }
-
-            setTimeout(typeEffect, typeSpeed);
-        }
-        typeEffect();
-
-        // Portfolio Filter Tabs Logic
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => {
-                    b.classList.remove('bg-brand-500', 'text-white');
-                    b.classList.add('text-gray-400');
-                });
-                btn.classList.add('bg-brand-500', 'text-white');
-                btn.classList.remove('text-gray-400');
-
-                const filterValue = btn.getAttribute('data-filter');
-
-                projectCards.forEach(card => {
-                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Testimonial Carousel Data & Logic
-        const testimonials = [
-            {
-                text: '"AuraCode redesigned our web platform in under 3 weeks. Our Lighthouse performance jumped to 99 and conversion improved dramatically!"',
-                name: 'Sarah Jenkins',
-                role: 'CTO at FinEdge Global',
-                avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'
-            },
-            {
-                text: '"The Tailwind and React code quality was so clean that our internal team picked it up immediately. Top tier execution."',
-                name: 'Marcus Vance',
-                role: 'Founder & CEO at SaaSify',
-                avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80'
-            },
-            {
-                text: '"Their attention to UI animations and mobile responsiveness gave our brand an instant enterprise-grade feel."',
-                name: 'Elena Rostova',
-                role: 'Head of Product at Synthetix AI',
-                avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80'
-            }
-        ];
-
-        let currentTestimonial = 0;
-        const textEl = document.getElementById('testimonial-text');
-        const nameEl = document.getElementById('testimonial-name');
-        const roleEl = document.getElementById('testimonial-role');
-        const avatarEl = document.getElementById('testimonial-avatar');
-
-        function updateTestimonial(index) {
-            textEl.textContent = testimonials[index].text;
-            nameEl.textContent = testimonials[index].name;
-            roleEl.textContent = testimonials[index].role;
-            avatarEl.src = testimonials[index].avatar;
-        }
-
-        document.getElementById('next-testimonial').addEventListener('click', () => {
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            updateTestimonial(currentTestimonial);
-        });
-
-        document.getElementById('prev-testimonial').addEventListener('click', () => {
-            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
-            updateTestimonial(currentTestimonial);
-        });
-
-        // Live Preview Modal
-        const modal = document.getElementById('preview-modal');
-        const modalTitle = document.getElementById('modal-title');
-        const modalDesc = document.getElementById('modal-desc');
-        const closeModalBtn = document.getElementById('close-modal');
-        const modalDismissBtn = document.getElementById('modal-dismiss-btn');
-
-        document.querySelectorAll('.preview-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                modalTitle.textContent = btn.getAttribute('data-title');
-                modalDesc.textContent = btn.getAttribute('data-desc');
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-            });
-        });
-
-        const closeModal = () => {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        };
-
-        closeModalBtn.addEventListener('click', closeModal);
-        modalDismissBtn.addEventListener('click', closeModal);
-
-        // Code Sandbox Run Button
-        document.getElementById('run-code-btn').addEventListener('click', () => {
-            const btn = document.getElementById('run-code-btn');
-            btn.textContent = 'Compiled & Running...';
-            btn.classList.add('text-emerald-400');
-            setTimeout(() => {
-                btn.textContent = 'Run Preview';
-            }, 2000);
-        });
-
-        // Interactive Contact Form Validation & Submission Handling
-        const contactForm = document.getElementById('contact-form');
-        const formAlert = document.getElementById('form-alert');
-
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const name = document.getElementById('form-name').value.trim();
-            const email = document.getElementById('form-email').value.trim();
-            const message = document.getElementById('form-message').value.trim();
-
-            if (!name || !email || !message) {
-                formAlert.className = "p-4 rounded-xl text-xs font-medium text-center bg-red-500/20 text-red-400 border border-red-500/30 block";
-                formAlert.textContent = "Please fill in all fields before submitting.";
-                return;
-            }
-
-            // Simulate Successful Submission
-            formAlert.className = "p-4 rounded-xl text-xs font-medium text-center bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 block";
-            formAlert.textContent = "Thank you! Your project brief has been received. We will contact you shortly.";
-            contactForm.reset();
-
-            setTimeout(() => {
-                formAlert.classList.add('hidden');
-            }, 5000);
-        });
-    </script>
+    <!-- Custom Script File Link -->
+    <script src="script.js"></script>
 </body>
 </html>
